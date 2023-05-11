@@ -9,6 +9,7 @@ class CounterCubit extends Cubit<CounterState> {
   Future<void> loadData() async {
     emit(PageLoading());
 
+    await Future.delayed(Duration.zero);
     //Loading Data
     var data = 1;
     emit(PageLoaded(data));

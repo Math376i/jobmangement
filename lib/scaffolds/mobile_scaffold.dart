@@ -24,7 +24,7 @@ class MobileScaffold extends StatelessWidget {
   }
 
   _buildNavigationBar(AppState state) {
-    return Column(
+    return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Row(
@@ -32,6 +32,11 @@ class MobileScaffold extends StatelessWidget {
           children: pages.asMap().entries.map((e) {
             return _buildNavigationItem(state, e.value, e.key);
           }).toList(),
+        ),
+        FloatingActionButton(
+          onPressed: () {
+            print("object");
+          },
         )
       ],
     );

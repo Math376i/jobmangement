@@ -38,3 +38,11 @@ const List<AppPage> pages = [
     selectedIcon: Icons.calculate,
   )
 ];
+
+const List<AppPage> pages_settings = [
+  AppPage(
+      title: 'Settings',
+      icon: Icons.settings,
+      selectedIcon: Icons.settings_outlined,
+      builder: CounterPage.new),
+];
