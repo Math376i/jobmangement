@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_counter/counter/counter.dart';
+import 'package:flutter_counter/settings/cubit/settings_cubit.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -13,8 +16,14 @@ void main() {
 class JobManagementApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => AppState(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => AppState(),
+        ),
+        BlocProvider<SettingsState>(
+            create: (BuildContext context) => SettingsState())
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         builder: (context, child) => ResponsiveWrapper.builder(
