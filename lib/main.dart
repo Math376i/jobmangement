@@ -21,8 +21,6 @@ class JobManagementApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => AppState(),
         ),
-        BlocProvider<SettingsState>(
-            create: (BuildContext context) => SettingsState())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

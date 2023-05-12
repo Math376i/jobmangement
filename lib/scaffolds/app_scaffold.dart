@@ -9,7 +9,6 @@ class AppScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //var responsive = ResponsiveWrapper.of(context);
-
     return const MobileScaffold();
   }
 }

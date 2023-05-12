@@ -39,7 +39,7 @@ const List<AppPage> pages = [
   )
 ];
 
-const List<AppPage> pages_settings = [
+const List<AppPage> popupPages = [
   AppPage(
       title: 'Settings',
       icon: Icons.settings,
