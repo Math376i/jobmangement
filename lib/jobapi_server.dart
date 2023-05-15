@@ -10,8 +10,12 @@ class Server {
   static refresh() async {}
 
   static getProblems() async {
+    print(baseAssetURL);
     final url = 'http://$baseAssetURL/WebApi/Problem';
     final response = await http.get(Uri.parse(url));
+    if (response != null) {
+      print("Got data from $url");
+    }
     final jsonString = response.body;
     final data = json.decode(jsonString);
     final problemsList = Problem.fromJson(data['problems'] as List<dynamic>);
