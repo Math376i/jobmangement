@@ -12,6 +12,15 @@ class Server {
   static getProblems() async {
     print(baseAssetURL);
     final url = 'http://$baseAssetURL/WebApi/Problem';
+
+    try {
+      var resp = await http.get(Uri.parse(url));
+      print("Response status: ${resp.statusCode}");
+      print('Response body: ${resp.body}');
+    } catch (e) {
+      print('Error: $e');
+    }
+
     final response = await http.get(Uri.parse(url));
     if (response != null) {
       print("Got data from $url");
