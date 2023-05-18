@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_counter/counter/view/counter_page.dart';
 import 'package:flutter_counter/maps/view/maps_page.dart';
+import 'package:flutter_counter/settings/view/settings_page.dart';
 
 import '../home/view/home_page.dart';
 
@@ -36,13 +37,10 @@ const List<AppPage> pages = [
     builder: CounterPage.new,
     icon: Icons.calculate_outlined,
     selectedIcon: Icons.calculate,
-  )
-];
-
-const List<AppPage> popupPages = [
+  ),
   AppPage(
-      title: 'Settings',
-      icon: Icons.settings,
-      selectedIcon: Icons.settings_outlined,
-      builder: CounterPage.new),
+      title: "Settings",
+      icon: Icons.settings_outlined,
+      selectedIcon: Icons.settings,
+      builder: SettingsPage.new)
 ];

@@ -11,4 +11,10 @@ class HomeLoadedState extends HomeState {
   final List<Problem> data;
 
   HomeLoadedState(this.data);
+
+  bool? importantCheckbox;
+}
+
+class HomeNewProblemModalState extends HomeState {
+  bool importantChekcbox = false;
 }

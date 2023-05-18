@@ -32,4 +32,16 @@ class Server {
     final problemsList = Problem.fromJson(data['problems'] as List<dynamic>);
     return problemsList;
   }
+
+  static createNewProblem(Problem problem) async {
+    final url = 'http://$baseAssetURL/WebApi/Problem';
+
+    try {
+      var data = jsonEncode(problem.toJson());
+      var resp = await http.put(Uri.parse(url), body: data);
+      print(resp);
+    } catch (e) {
+      print('Error: $e');
+    }
+  }
 }

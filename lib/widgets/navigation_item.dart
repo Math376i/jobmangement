@@ -41,7 +41,6 @@ class NavigationItem extends StatelessWidget {
     return Icon(
       selectedIcon,
       color: color,
-      shadows: [Shadow(color: color, blurRadius: 10.0)],
       size: 30,
     );
   }

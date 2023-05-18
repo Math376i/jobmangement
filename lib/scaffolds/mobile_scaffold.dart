@@ -21,24 +21,21 @@ class MobileScaffold extends StatelessWidget {
   }
 
   _buildNavigationBar(AppState state) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: pages.asMap().entries.map((e) {
-            return _buildNavigationItem(state, e.value, e.key);
-          }).toList(),
-        ),
-        PopupMenuButton(
-          itemBuilder: (BuildContext context) => <PopupMenuEntry<SampleItem>>[
-            const PopupMenuItem(
-              value: SampleItem.itemOne,
-              child: Text("Settings"),
+    return Container(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: pages.asMap().entries.map((e) {
+                return _buildNavigationItem(state, e.value, e.key);
+              }).toList(),
             ),
           ],
-        )
-      ],
+        ),
+      ),
     );
   }
 

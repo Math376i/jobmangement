@@ -15,21 +15,6 @@ class Problem {
       required this.image});
 
   static List<Problem> fromJson(List<dynamic> problem) {
-    // final ids = problem['problemId'];
-    // final locations = problem['location'];
-    // final status = problem['status'];
-    // final descriptions = problem['description'];
-    // final image = problem['image'];
-
-    // return List.generate(
-    //     problem.length,
-    //     (index) => Problem(
-    //         problemId: ids[index],
-    //         location: locations[index],
-    //         description: descriptions[index],
-    //         status: status[index],
-    //         image: image[index]));
-
     return problem
         .map((problem) => Problem(
             problemId: problem['problemId'],
@@ -39,5 +24,15 @@ class Problem {
             status: problem['status'],
             image: problem['image']))
         .toList();
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'problemId': problemId,
+      'problemName': problemName,
+      'location': location,
+      'description': description,
+      'image': image
+    };
   }
 }

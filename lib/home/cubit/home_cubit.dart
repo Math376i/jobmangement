@@ -11,8 +11,24 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> getCriticalProblems() async {
     emit(HomeLoadingState());
-    List<Problem> critProblems = await Server.getProblems();
+    List<Problem> data = await Server.getProblems();
+    emit(HomeLoadedState(data));
+  }
 
-    emit(HomeLoadedState(critProblems));
+  Future<void> createNewProblemModal() async {
+    emit(HomeNewProblemModalState());
+  }
+
+  Future<void> createNewProblem(Problem problem) async {
+    await Server.createNewProblem(problem);
+    emit(HomeLoadingState());
+  }
+
+  Future<void> refresh() async {
+    emit(HomeLoadingState());
+  }
+
+  Future<void> backToMain() async {
+    emit(HomeLoadingState());
   }
 }

@@ -17,6 +17,10 @@ dependencies:
   responsive_framework: ^0.2.0
   http: ^0.13.6
   shared_preferences: ^2.1.1
+  expandable: ^5.0.1
+  flutter_map: ^4.0.0
+  location: ^4.4.0
+  latlong2: ^0.8.1
 
 dev_dependencies:
   bloc_test: ^9.1.0
@@ -31,3 +35,4 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
