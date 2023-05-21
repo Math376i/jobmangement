@@ -13,15 +13,7 @@ class Server {
 
   static getProblems() async {
     print(baseAssetURL);
-    final url = 'http://$baseAssetURL/WebApi/Problem';
-
-    try {
-      var resp = await http.get(Uri.parse(url), headers: headers);
-      print("Response status: ${resp.statusCode}");
-      print('Response body: ${resp.body}');
-    } catch (e) {
-      print('Error: $e');
-    }
+    final url = 'http://$baseAssetURL/api/Problem';
 
     final response = await http.get(Uri.parse(url));
     if (response != null) {
@@ -34,7 +26,7 @@ class Server {
   }
 
   static createNewProblem(Problem problem) async {
-    final url = 'http://$baseAssetURL/WebApi/Problem';
+    final url = 'http://$baseAssetURL/api/Problem';
 
     try {
       var data = jsonEncode(problem.toJson());

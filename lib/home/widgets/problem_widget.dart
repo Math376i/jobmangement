@@ -26,7 +26,7 @@ class ProblemWidget extends StatelessWidget {
           child: Column(
             children: [
               Text("Description :${problem.description}"),
-              Text("Location :${problem.location}"),
+              Text("Location :${problem.latitude} ${problem.longitude}"),
             ],
           ),
         ),

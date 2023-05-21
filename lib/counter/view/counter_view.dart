@@ -20,8 +20,8 @@ class CounterView extends StatelessWidget {
               child: Text(state.message),
             );
           } else if (state is PageLoading) {
-            return const Center(
-              child: CircularProgressIndicator(),
+            return Container(
+              child: LinearProgressIndicator(),
             );
           } else if (state is PageLoaded) {
             return Center(

@@ -1,15 +1,17 @@
 class Problem {
   final int problemId;
-  final String problemName;
-  final String location;
-  final String status;
-  final String description;
-  final String image;
+  String problemName;
+  num latitude;
+  num longitude;
+  String status;
+  String description;
+  String image;
 
   Problem(
       {required this.problemId,
       required this.problemName,
-      required this.location,
+      required this.latitude,
+      required this.longitude,
       required this.description,
       required this.status,
       required this.image});
@@ -19,7 +21,8 @@ class Problem {
         .map((problem) => Problem(
             problemId: problem['problemId'],
             problemName: problem['problemName'],
-            location: problem['location'],
+            latitude: problem['latitude'],
+            longitude: problem['longitude'],
             description: problem['description'],
             status: problem['status'],
             image: problem['image']))
@@ -30,7 +33,8 @@ class Problem {
     return {
       'problemId': problemId,
       'problemName': problemName,
-      'location': location,
+      'latitude': latitude,
+      'longitude': longitude,
       'description': description,
       'image': image
     };
