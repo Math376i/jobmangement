@@ -16,7 +16,7 @@ class MapsCubit extends Cubit<MapsState> {
   Future<void> getProblems() async {
     emit(MapsLoadingState());
     List<Problem> data = await Server.getProblems();
-    await Future.delayed(Duration(seconds: 1));
+    //await Future.delayed(Duration(seconds: 1));
     emit(MapsLoadedState(data));
   }
 

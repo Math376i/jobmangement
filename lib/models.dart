@@ -1,8 +1,8 @@
 class Problem {
   final int problemId;
   String problemName;
-  num latitude;
-  num longitude;
+  String latitude;
+  String longitude;
   String status;
   String description;
   String image;
@@ -19,13 +19,14 @@ class Problem {
   static List<Problem> fromJson(List<dynamic> problem) {
     return problem
         .map((problem) => Problem(
-            problemId: problem['problemId'],
-            problemName: problem['problemName'],
-            latitude: problem['latitude'],
-            longitude: problem['longitude'],
-            description: problem['description'],
-            status: problem['status'],
-            image: problem['image']))
+              problemId: problem['problemId'] as int,
+              problemName: problem['problemName'] as String,
+              latitude: problem['latitude'],
+              longitude: problem['longitude'],
+              description: problem['description'] as String,
+              status: problem['status'] as String,
+              image: problem['image'] as String,
+            ))
         .toList();
   }
 
