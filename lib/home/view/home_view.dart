@@ -2,9 +2,11 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_counter/colors.dart';
 import 'package:flutter_counter/home/cubit/home_cubit.dart';
 import 'package:flutter_counter/home/widgets/problem_form_widget.dart';
 import 'package:flutter_counter/home/widgets/problem_widget.dart';
+import 'package:flutter_counter/widgets/problem_dialog.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter_counter/app_state.dart';
@@ -30,6 +32,7 @@ class HomeView extends StatelessWidget {
         } else if (state is HomeLoadedState) {
           return Scaffold(
             body: ListView.builder(
+                physics: BouncingScrollPhysics(),
                 itemCount: state.data.length,
                 itemBuilder: (context, index) {
                   return ProblemWidget(state.data[index]);
@@ -40,6 +43,7 @@ class HomeView extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.all(4),
                   child: FloatingActionButton(
+                    backgroundColor: ColorDef.company,
                     onPressed: () =>
                         BlocProvider.of<HomeCubit>(context).refresh(),
                     tooltip: 'Refresh Page',
@@ -49,8 +53,11 @@ class HomeView extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.all(4),
                   child: FloatingActionButton(
-                    onPressed: () => BlocProvider.of<HomeCubit>(context)
-                        .createNewProblemModal(),
+                    backgroundColor: ColorDef.company,
+                    onPressed: () => showDialog(
+                      context: context,
+                      builder: ((context) => ProblemDialog()),
+                    ),
                     tooltip: 'Create new Problem',
                     child: const Icon(Icons.new_label_outlined),
                   ),

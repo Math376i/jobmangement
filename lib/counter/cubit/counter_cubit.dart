@@ -14,7 +14,7 @@ class CounterCubit extends Cubit<CounterState> {
     await Future.delayed(Duration.zero);
 
     List<Problem> problems = await Server.getProblems();
-    int testdata = problems[1].problemId;
+    int testdata = problems[0].problemId;
 
     print("refresh done");
     //Loading Data

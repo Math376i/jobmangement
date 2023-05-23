@@ -23,7 +23,7 @@ class MobileScaffold extends StatelessWidget {
   _buildNavigationBar(AppState state) {
     return Container(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -41,6 +41,7 @@ class MobileScaffold extends StatelessWidget {
 
   NavigationItem _buildNavigationItem(AppState state, AppPage page, int index) {
     return NavigationItem(
+      text: "Hello",
       selected: state.selectedIndex == index,
       icon: page.icon,
       selectedIcon: page.selectedIcon,

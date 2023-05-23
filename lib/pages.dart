@@ -33,14 +33,9 @@ const List<AppPage> pages = [
     selectedIcon: Icons.home,
   ),
   AppPage(
-    title: "Test Environment",
-    builder: CounterPage.new,
-    icon: Icons.calculate_outlined,
-    selectedIcon: Icons.calculate,
-  ),
-  AppPage(
-      title: "Settings",
-      icon: Icons.settings_outlined,
-      selectedIcon: Icons.settings,
-      builder: SettingsPage.new)
+    title: "Settings",
+    builder: SettingsPage.new,
+    icon: Icons.settings_outlined,
+    selectedIcon: Icons.settings,
+  )
 ];

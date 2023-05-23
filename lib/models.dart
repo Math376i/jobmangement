@@ -40,4 +40,10 @@ class Problem {
       'image': image
     };
   }
+
+  @override
+  String toString() {
+    // TODO: implement toString
+    return 'Problem{name: $problemName, location: $latitude $longitude, status: $status}';
+  }
 }

@@ -31,4 +31,13 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> backToMain() async {
     emit(HomeLoadingState());
   }
+
+  Future<void> changeToCompleted(int problemId) async {
+    emit(HomeLoadingState());
+    List<Problem> data = await Server.getProblems();
+    Problem object =
+        data.firstWhere((element) => element.problemId == problemId);
+    object.status = "completed";
+    emit(HomeLoadedState(data));
+  }
 }

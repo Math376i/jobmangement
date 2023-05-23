@@ -31,11 +31,11 @@ class MapsView extends StatelessWidget {
           return Scaffold(
             body: FlutterMap(
               options: MapOptions(
-                center: latLng,
-                zoom: 13.0, // Initial zoom level
-                maxZoom: 18.45,
-                minZoom: 3,
-              ),
+                  center: latLng,
+                  zoom: 13.0, // Initial zoom level
+                  maxZoom: 18.45,
+                  minZoom: 3,
+                  interactiveFlags: state.interActiveFalgs),
               children: [
                 TileLayer(
                   urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',

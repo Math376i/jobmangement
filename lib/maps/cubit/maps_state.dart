@@ -6,9 +6,10 @@ abstract class MapsState {
   List<Problem>? problemsList;
   late final MapController _mapController;
 
-  int interActiveFalgs = InteractiveFlag.rotate |
-      InteractiveFlag.pinchMove |
-      InteractiveFlag.doubleTapZoom;
+  int interActiveFalgs = InteractiveFlag.pinchMove |
+      InteractiveFlag.doubleTapZoom |
+      InteractiveFlag.pinchZoom |
+      InteractiveFlag.drag;
 
   final Location _locationService = Location();
 

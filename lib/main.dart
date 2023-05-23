@@ -23,6 +23,13 @@ class JobManagementApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        theme: ThemeData(
+          brightness: Brightness.light,
+        ),
+        darkTheme: ThemeData(
+          brightness: Brightness.dark,
+        ),
+        themeMode: ThemeMode.light,
         debugShowCheckedModeBanner: false,
         builder: (context, child) => ResponsiveWrapper.builder(
           StretchingScrollWrapper.builder(context, child!),
