@@ -22,6 +22,7 @@ dependencies:
   location: ^4.4.0
   latlong2: ^0.8.1
 
+
 dev_dependencies:
   bloc_test: ^9.1.0
   flutter_test:
