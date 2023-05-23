@@ -30,8 +30,9 @@ class Server {
 
     try {
       var data = jsonEncode(problem.toJson());
-      var resp = await http.put(Uri.parse(url), body: data);
-      print(resp);
+      print(data);
+      var resp = await http.post(Uri.parse(url), body: data);
+      print(resp.statusCode);
     } catch (e) {
       print('Error: $e');
     }

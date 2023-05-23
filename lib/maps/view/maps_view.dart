@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_counter/colors.dart';
 import 'package:flutter_counter/maps/maps.dart';
 import 'package:flutter_counter/maps/widgets/location_dialog.dart';
 import 'package:flutter_counter/models.dart';
@@ -69,6 +70,7 @@ class MapsView extends StatelessWidget {
           double.parse(markerData.longitude),
         ), // Assuming your MarkerData has a LatLng property
         builder: (ctx) => FloatingActionButton(
+          backgroundColor: ColorDef.company,
           child: Text(
             '${markerData.problemId}',
             style: const TextStyle(fontSize: 30),
