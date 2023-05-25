@@ -51,7 +51,6 @@ class ProblemFormWidget extends StatelessWidget {
               value: _useLocation,
               onChanged: (value) {
                 _useLocation = value ?? true;
-                print(value);
               },
             ),
           ],

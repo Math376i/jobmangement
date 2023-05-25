@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_counter/counter/counter.dart';
 import 'package:flutter_counter/settings/cubit/settings_cubit.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app_state.dart';
 import 'scaffolds/app_scaffold.dart';

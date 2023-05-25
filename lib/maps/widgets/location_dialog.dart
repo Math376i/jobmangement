@@ -43,7 +43,12 @@ class LocationDialog extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text('Status: ${problem.status}'),
           ),
-          SizedBox(width: 300),
+          SizedBox(
+            width: 300,
+            child: GestureDetector(
+              child: Hero(tag: 'imageHero', child: _setImage(problem.image)),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextButton(
@@ -57,5 +62,19 @@ class LocationDialog extends StatelessWidget {
         ],
       ),
     ));
+  }
+
+  Container _setImage(String image) {
+    if (image.isEmpty || image == "") {
+      return Container();
+    }
+    return Container(
+      child: Image.network(
+        '$image',
+        width: 345,
+        height: 150,
+        fit: BoxFit.cover,
+      ),
+    );
   }
 }

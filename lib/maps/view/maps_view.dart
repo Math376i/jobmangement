@@ -26,7 +26,7 @@ class MapsView extends StatelessWidget {
           );
         }
         if (state is MapsLoadedState) {
-          LatLng latLng = state.currentLocation ?? LatLng(55.5, 8.5);
+          LatLng latLng = state.currentLocation ?? LatLng(55.485831, 8.455615);
           List<Problem> problems = state.data;
 
           return Scaffold(
@@ -45,9 +45,11 @@ class MapsView extends StatelessWidget {
                 MarkerLayer(
                   markers: _createMarkers(problems),
                 ),
-                MarkerLayer(
-                  markers: [],
-                )
+                const MarkerLayer(
+                  markers: [
+                    // TODO: Create a location marker at current location
+                  ],
+                ),
               ],
             ),
           );
@@ -61,16 +63,31 @@ class MapsView extends StatelessWidget {
   }
 
   List<Marker> _createMarkers(List<Problem> markerDataList) {
-    return markerDataList.map((markerData) {
-      return Marker(
+    List<Marker> markers = [];
+
+    for (var markerData in markerDataList) {
+      if (markerData.status == 'completed') {
+        continue;
+      }
+
+      var color = ColorDef.company;
+      if (markerData.status == "urgent") {
+        color = ColorDef.allert;
+      } else if (markerData.status == "important") {
+        color = ColorDef.warning;
+      } else if (markerData.status == "completed") {
+        color = ColorDef.okay;
+      }
+
+      Marker marker = Marker(
         width: 60.0,
         height: 60.0,
         point: LatLng(
           double.parse(markerData.latitude),
           double.parse(markerData.longitude),
-        ), // Assuming your MarkerData has a LatLng property
+        ),
         builder: (ctx) => FloatingActionButton(
-          backgroundColor: ColorDef.company,
+          backgroundColor: color,
           child: Text(
             '${markerData.problemId}',
             style: const TextStyle(fontSize: 30),
@@ -81,6 +98,10 @@ class MapsView extends StatelessWidget {
           ),
         ),
       );
-    }).toList();
+
+      markers.add(marker);
+    }
+
+    return markers;
   }
 }

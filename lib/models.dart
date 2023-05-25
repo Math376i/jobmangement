@@ -37,13 +37,47 @@ class Problem {
       'latitude': latitude,
       'longitude': longitude,
       'description': description,
+      'status': status,
       'image': image
     };
   }
 
   @override
   String toString() {
-    // TODO: implement toString
     return 'Problem{name: $problemName, location: $latitude $longitude, status: $status}';
+  }
+}
+
+class Settings {
+  String apiServerIp;
+  String apiServerPort;
+
+  Settings({
+    required this.apiServerIp,
+    required this.apiServerPort,
+  });
+
+  factory Settings.fromJson(Map<String, dynamic> json) {
+    return Settings(
+      apiServerIp: json['apiServerIp'] as String,
+      apiServerPort: json['apiServerPort'] as String,
+    );
+  }
+
+  factory Settings.toJson({
+    required String apiServerIp,
+    required String apiServerPort,
+  }) {
+    return Settings(
+      apiServerIp: apiServerIp,
+      apiServerPort: apiServerPort,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'apiServerIp': apiServerIp,
+      'apiServerPort': apiServerPort,
+    };
   }
 }

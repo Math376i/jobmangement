@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_counter/counter/view/counter_page.dart';
 import 'package:flutter_counter/maps/view/maps_page.dart';
 import 'package:flutter_counter/settings/view/settings_page.dart';
 

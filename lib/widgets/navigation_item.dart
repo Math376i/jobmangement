@@ -4,14 +4,12 @@ import 'package:flutter_counter/colors.dart';
 class NavigationItem extends StatelessWidget {
   const NavigationItem({
     super.key,
-    required this.text,
     required this.selected,
     required this.icon,
     required this.selectedIcon,
     required this.onPressed,
   });
 
-  final String text;
   final IconData icon;
   final bool selected;
   final IconData selectedIcon;
@@ -60,7 +58,11 @@ class NavigationItem extends StatelessWidget {
               width: 100,
             ),
           ),
-          Icon(icon)
+          Icon(
+            selectedIcon,
+            color: color,
+            size: 45,
+          )
         ],
       ),
     );
@@ -82,7 +84,8 @@ class NavigationItem extends StatelessWidget {
           Icon(
             icon,
             color: color,
-          )
+            size: 45,
+          ),
         ],
       ),
     );

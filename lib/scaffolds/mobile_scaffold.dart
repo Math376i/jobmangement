@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_counter/models.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../app_state.dart';
 import '../pages.dart';
@@ -13,6 +17,7 @@ class MobileScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final state = Provider.of<AppState>(context);
+    setDefaultSharedPreferencesData();
 
     return Scaffold(
       body: state.currentPage.builder(),
@@ -41,11 +46,23 @@ class MobileScaffold extends StatelessWidget {
 
   NavigationItem _buildNavigationItem(AppState state, AppPage page, int index) {
     return NavigationItem(
-      text: "Hello",
       selected: state.selectedIndex == index,
       icon: page.icon,
       selectedIcon: page.selectedIcon,
       onPressed: () => state.selectedIndex = index,
     );
+  }
+
+  void setDefaultSharedPreferencesData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (!prefs.containsKey('settings')) {
+      print('Setting Default Shared Preferences');
+      final settings = Settings(
+        apiServerIp: 'Default-Value',
+        apiServerPort: 'Default-Value',
+      );
+      final jsonString = jsonEncode(settings.toJson());
+      prefs.setString('settings', jsonString);
+    }
   }
 }

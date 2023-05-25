@@ -16,12 +16,6 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final state = Provider.of<HomeState>(context);
-    //final homestate = Provider.of<HomeState>(context);
-    //final homeCubit = context.watch<HomeCubit>();
-    final TextEditingController _textEditingController =
-        TextEditingController();
-
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         if (state is HomeLoadingState) {
@@ -31,12 +25,15 @@ class HomeView extends StatelessWidget {
           );
         } else if (state is HomeLoadedState) {
           return Scaffold(
-            body: ListView.builder(
-                physics: BouncingScrollPhysics(),
-                itemCount: state.data.length,
-                itemBuilder: (context, index) {
-                  return ProblemWidget(state.data[index]);
-                }),
+            body: RefreshIndicator(
+              onRefresh: () => _refreshList(context),
+              child: ListView.builder(
+                  physics: BouncingScrollPhysics(),
+                  itemCount: state.data.length,
+                  itemBuilder: (context, index) {
+                    return ProblemWidget(state.data[index]);
+                  }),
+            ),
             floatingActionButton: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -44,8 +41,7 @@ class HomeView extends StatelessWidget {
                   padding: EdgeInsets.all(4),
                   child: FloatingActionButton(
                     backgroundColor: ColorDef.company,
-                    onPressed: () =>
-                        BlocProvider.of<HomeCubit>(context).refresh(),
+                    onPressed: () => _refreshList(context),
                     tooltip: 'Refresh Page',
                     child: const Icon(Icons.refresh_outlined),
                   ),
@@ -80,6 +76,10 @@ class HomeView extends StatelessWidget {
         }
       },
     );
+  }
+
+  Future<void> _refreshList(BuildContext context) async {
+    BlocProvider.of<HomeCubit>(context).refresh();
   }
 
   void onChanged(bool? value) {}

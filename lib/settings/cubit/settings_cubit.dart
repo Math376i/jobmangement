@@ -2,30 +2,36 @@ import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter_counter/app_state.dart';
+import 'package:flutter_counter/models.dart';
+import 'package:flutter_counter/shared_prefs.dart';
 import 'package:meta/meta.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 part 'settings_state.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit() : super(SettingsLoading());
 
-  static Map<String, dynamic>? _data;
-
   Future<void> loadSettings() async {
     emit(SettingsLoading());
-    final prefs = await SharedPreferences.getInstance();
-    final jsonString = await prefs.getString('api_server_address');
-    if (jsonString == null) return;
-    _data = json.decode(jsonString);
+    // await Future.delayed(Duration(seconds: 2));
 
-    emit(SettingsLoaded());
+    try {
+      Settings settings = await SavedData.getSettings();
+      emit(SettingsLoaded(settings));
+    } catch (e) {
+      emit(SettingsError(Exception(e)));
+    }
   }
 
-  Future<void> saveSettings() async {
+  Future<void> saveSettings(Settings settings) async {
     emit(SettingsSaving());
-    final prefs = await SharedPreferences.getInstance();
-    final jsonString = json.encode(_data);
-    await prefs.setString('settings', jsonString);
+    try {
+      await Future.delayed(Duration(seconds: 2));
+      Settings setting = await SavedData.saveSettings(settings);
+      emit(SettingsLoaded(setting));
+    } catch (e) {
+      emit(SettingsError(Exception(e)));
+    }
+    //final jsonString = await SavedData.getSettings();
   }
 }
