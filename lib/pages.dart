@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_counter/maps/view/maps_page.dart';
 import 'package:flutter_counter/settings/view/settings_page.dart';
+import 'package:flutter_counter/user/view/user_page.dart';
 
 import '../home/view/home_page.dart';
 
@@ -30,6 +31,12 @@ const List<AppPage> pages = [
     builder: HomePage.new,
     icon: Icons.home_outlined,
     selectedIcon: Icons.home,
+  ),
+  AppPage(
+    title: "User",
+    icon: Icons.supervised_user_circle,
+    selectedIcon: Icons.supervised_user_circle_outlined,
+    builder: UserPage.new,
   ),
   AppPage(
     title: "Settings",

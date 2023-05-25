@@ -15,12 +15,12 @@ class MapsCubit extends Cubit<MapsState> {
 
   Future<void> getProblems() async {
     emit(MapsLoadingState());
-    List<Problem> data = await Server.getProblems();
+    List<Problem> data = await Server.getProblems(false);
     //await Future.delayed(Duration(seconds: 1));
     emit(MapsLoadedState(data));
   }
 
   Future<void> getLocation() async {
-    print('Getting location : Todo Later');
+    //print('Getting location : Todo Later');
   }
 }

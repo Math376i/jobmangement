@@ -12,7 +12,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:provider/provider.dart';
 
 class MapsView extends StatelessWidget {
-  const MapsView({super.key});
+  const MapsView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -12,13 +12,11 @@ import '../widgets/navigation_item.dart';
 enum SampleItem { itemOne, itemTwo, itemThree }
 
 class MobileScaffold extends StatelessWidget {
-  const MobileScaffold({super.key});
+  const MobileScaffold({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final state = Provider.of<AppState>(context);
-    setDefaultSharedPreferencesData();
-
     return Scaffold(
       body: state.currentPage.builder(),
       bottomNavigationBar: _buildNavigationBar(state),
@@ -51,18 +49,5 @@ class MobileScaffold extends StatelessWidget {
       selectedIcon: page.selectedIcon,
       onPressed: () => state.selectedIndex = index,
     );
-  }
-
-  void setDefaultSharedPreferencesData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (!prefs.containsKey('settings')) {
-      print('Setting Default Shared Preferences');
-      final settings = Settings(
-        apiServerIp: 'Default-Value',
-        apiServerPort: 'Default-Value',
-      );
-      final jsonString = jsonEncode(settings.toJson());
-      prefs.setString('settings', jsonString);
-    }
   }
 }

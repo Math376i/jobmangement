@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_counter/app_state.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+  const HomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

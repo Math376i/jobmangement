@@ -6,7 +6,7 @@ import 'package:latlong2/latlong.dart';
 
 class LocationDialog extends StatelessWidget {
   final Problem problem;
-  const LocationDialog(this.problem, {super.key});
+  const LocationDialog(this.problem, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

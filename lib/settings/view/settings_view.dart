@@ -6,7 +6,7 @@ import 'package:flutter_counter/shared_prefs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsView extends StatelessWidget {
-  const SettingsView({super.key});
+  const SettingsView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +55,9 @@ class SettingsView extends StatelessWidget {
           if (state is SettingsLoading) {
             BlocProvider.of<SettingsCubit>(context).loadSettings();
             return const Center(
-              child: Text("Initial State Dummy"),
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
             );
           }
           if (state is SettingsLoaded) {
@@ -93,18 +95,21 @@ class SettingsView extends StatelessWidget {
                     Expanded(
                       child: Container(),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        ElevatedButton(
-                          onPressed: _cancelForm,
-                          child: const Text("Cancel"),
-                        ),
-                        ElevatedButton(
-                          onPressed: _submitForm,
-                          child: const Text("Save Settings"),
-                        ),
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          ElevatedButton(
+                            onPressed: _cancelForm,
+                            child: const Text("Cancel"),
+                          ),
+                          ElevatedButton(
+                            onPressed: _submitForm,
+                            child: const Text("Save Settings"),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
