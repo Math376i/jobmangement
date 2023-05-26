@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_counter/login/view/login_page.dart';
 import 'package:flutter_counter/maps/view/maps_page.dart';
 import 'package:flutter_counter/settings/view/settings_page.dart';
 import 'package:flutter_counter/user/view/user_page.dart';
@@ -43,5 +44,14 @@ const List<AppPage> pages = [
     builder: SettingsPage.new,
     icon: Icons.settings_outlined,
     selectedIcon: Icons.settings,
+  )
+];
+
+const List<AppPage> loginPages = [
+  AppPage(
+    title: "LoginPage",
+    icon: Icons.login,
+    selectedIcon: Icons.login_outlined,
+    builder: LoginPage.new,
   )
 ];

@@ -21,4 +21,8 @@ class AppState extends ChangeNotifier {
   AppPage get currentPage {
     return pages[_selectedIndex];
   }
+
+  AppPage get loginPage {
+    return loginPages[0];
+  }
 }

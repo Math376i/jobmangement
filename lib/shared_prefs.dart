@@ -78,4 +78,29 @@ class SavedData {
     }
     return null;
   }
+
+  static Future<bool> checkLoggedIn() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final jsonString = prefs.getString('user');
+    if (jsonString != null) {
+      return true;
+    }
+    return false;
+  }
+
+  static login(String email, String key) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final user = User(email: email, key: key);
+    final jsonString = jsonEncode(user.toJson());
+    prefs.setString('user', jsonString);
+  }
+
+  static logOut() async {
+    removeKeyValue('user');
+  }
+
+  static removeKeyValue(String key) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove(key);
+  }
 }

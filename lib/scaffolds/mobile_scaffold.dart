@@ -9,8 +9,6 @@ import '../app_state.dart';
 import '../pages.dart';
 import '../widgets/navigation_item.dart';
 
-enum SampleItem { itemOne, itemTwo, itemThree }
-
 class MobileScaffold extends StatelessWidget {
   const MobileScaffold({Key? key}) : super(key: key);
 

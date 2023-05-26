@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_counter/shared_prefs.dart';
 
 class UserView extends StatelessWidget {
   const UserView({Key? key}) : super(key: key);
@@ -7,6 +8,8 @@ class UserView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: const Text('User Page'),
         actions: [
           IconButton(
             onPressed: () {
@@ -22,7 +25,8 @@ class UserView extends StatelessWidget {
     );
   }
 
-  void _logout(BuildContext context) {
+  void _logout(BuildContext context) async {
+    await SavedData.logOut();
     Navigator.pushReplacementNamed(context, '/login');
   }
 }

@@ -28,7 +28,6 @@ class HomeView extends StatelessWidget {
             body: RefreshIndicator(
               onRefresh: () => _refreshList(context),
               child: ListView.builder(
-                  physics: BouncingScrollPhysics(),
                   itemCount: state.data.length,
                   itemBuilder: (context, index) {
                     return ProblemWidget(state.data[index]);

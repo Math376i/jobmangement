@@ -13,7 +13,7 @@ class SettingsCubit extends Cubit<SettingsState> {
 
   Future<void> loadSettings() async {
     emit(SettingsLoading());
-    await Future.delayed(Duration(seconds: 2));
+    //await Future.delayed(Duration(seconds: 2));
 
     try {
       Settings settings = await SavedData.getSettings();
