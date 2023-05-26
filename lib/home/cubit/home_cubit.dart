@@ -27,6 +27,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> refresh() async {
     emit(HomeLoadingState());
+    await Future.delayed(Duration(seconds: 2));
     List<Problem> data = await Server.getProblems(true);
     emit(HomeLoadedState(data));
   }
@@ -37,7 +38,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> changeToCompleted(int problemId) async {
     emit(HomeLoadingState());
-    await Future.delayed(Duration(seconds: 2));
+    //await Future.delayed(Duration(seconds: 2));
 
     List<Problem> data = await Server.getProblems(true);
     Problem object =

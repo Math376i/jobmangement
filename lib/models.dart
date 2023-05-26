@@ -84,17 +84,19 @@ class Settings {
 
 class User {
   final String email;
-  final String key;
+  final String passkey;
+  String? key;
 
   User({
     required this.email,
-    required this.key,
+    required this.passkey,
+    this.key,
   });
 
   Map<String, dynamic> toJson() {
     return {
       'email': email,
-      'key': key,
+      'password': passkey,
     };
   }
 }

@@ -88,9 +88,9 @@ class SavedData {
     return false;
   }
 
-  static login(String email, String key) async {
+  static login(String email, String passkey) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    final user = User(email: email, key: key);
+    final user = User(email: email, passkey: passkey);
     final jsonString = jsonEncode(user.toJson());
     prefs.setString('user', jsonString);
   }

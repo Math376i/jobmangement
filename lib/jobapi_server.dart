@@ -7,7 +7,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'models.dart';
 import 'shared_prefs.dart';
 
-final headers = {'User-Agent': 'Flutter app'};
+final headers = {
+  'User-Agent': 'Flutter app',
+  'Content-Type': 'application/json'
+};
 
 class Server {
   static String baseUrl = '';
@@ -44,6 +47,35 @@ class Server {
     }
   }
 
+  static Future<bool> login(User user) async {
+    final baseUrl = await _getBaseUrl();
+    final url = '$baseUrl/Auth/Login';
+    final jsonStringUser = jsonEncode(user.toJson());
+    final response =
+        await http.post(Uri.parse(url), headers: headers, body: jsonStringUser);
+    if (response.statusCode != 200) {
+      return false;
+    }
+    final jsonString = response.body;
+    _saveData('user', jsonString);
+    return true;
+  }
+
+  static Future<bool> register(User user) async {
+    final baseUrl = await _getBaseUrl();
+    final url = '$baseUrl/Auth/Register';
+    final jsonStringUser = jsonEncode(user.toJson());
+    final response =
+        await http.post(Uri.parse(url), headers: headers, body: jsonStringUser);
+    if (response.statusCode != 200) {
+      return false;
+    }
+    final jsonString = response.body;
+    print(jsonString);
+    _saveData('user', jsonString);
+    return true;
+  }
+
   static Future<String> _getBaseUrl() async {
     if (Platform.isLinux || Platform.isWindows || Platform.isMacOS) {
       final baseUrl = 'http://${Constants.webapiUrl}${Constants.webapiPort}';
@@ -60,8 +92,7 @@ class Server {
 
     final url = '$baseUrl/api/Problem';
     var data = jsonEncode(problem.toJson());
-    var resp = await http.post(Uri.parse(url),
-        headers: {'Content-Type': 'application/json'}, body: data);
+    var resp = await http.post(Uri.parse(url), headers: headers, body: data);
   }
 
   static Future<void> _saveData(String key, String value) async {
@@ -81,6 +112,6 @@ class Server {
       Duration difference = currentTime.difference(storedTime);
       return difference >= duration;
     }
-    return true; // If no timestamp is found, assume enough time has passed
+    return true;
   }
 }
