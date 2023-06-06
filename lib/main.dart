@@ -114,7 +114,7 @@ void setDefaultSharedPreferencesData() async {
   if (!prefs.containsKey('settings')) {
     print('Setting Default Shared Preferences');
     final settings = Settings(
-      apiServerIp: '192.168.1.10',
+      apiServerIp: '10.178.88.58',
       apiServerPort: '', // Empty for default
     );
     final jsonString = jsonEncode(settings.toJson());
